@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+  <head>
+    <base target="_top" />
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 12px;
+        background: #fdfdfd;
+        padding: 10px;
+        color: #333;
+      }
+      .section {
+        background: white;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+        color: #ff7300;
+        text-transform: uppercase;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 6px;
+      }
+
+      .btn-add-queue {
+        background: #fff3e0;
+        color: #e65100;
+        border: 1px solid #ffe0b2;
+        padding: 8px;
+        width: 100%;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .btn-preview {
+        background: #e3f2fd;
+        color: #1565c0;
+        border: 1px solid #bbdefb;
+        padding: 10px;
+        width: 100%;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+      .btn-save {
+        background: #ff7300;
+        color: white;
+        padding: 15px;
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+
+      .queue-container {
+        margin-top: 20px;
+        border-top: 2px solid #ff7300;
+        padding-top: 10px;
+      }
+      .queue-item {
+        background: #f9f9f9;
+        border: 1px solid #eee;
+        padding: 8px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .queue-item b {
+        color: #ff7300;
+        font-size: 10px;
+        text-transform: uppercase;
+        margin-right: 10px;
+      }
+      .btn-delete {
+        background: #ffebee;
+        color: #c62828;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 10px;
+      }
+
+      .image-drop-zone {
+        position: relative;
+        border: 2px dashed #ccc;
+        padding: 10px;
+        text-align: center;
+        color: #999;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 5px;
+      }
+      .image-drop-zone.has-img {
+        background: #e8f5e9;
+        border-color: #4caf50;
+        color: #2e7d32;
+      }
+      .preview-thumb {
+        max-height: 60px;
+        display: none;
+        margin: 5px auto;
+      }
+
+      .remove-img-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #ff5252;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        display: none;
+        font-weight: bold;
+        z-index: 10;
+        line-height: 20px;
+        text-align: center;
+        padding: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .image-drop-zone.has-img .remove-img-btn {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <label>⏳ SPÓŹNIENIA</label>
+      <textarea
+        id="inp-spozn"
+        placeholder="Wklej blok z Telegrama..."
+      ></textarea>
+      <button class="btn-add-queue" onclick="addToQueue('spoznienie')">
+        ➕ DODAJ
+      </button>
+    </div>
+
+    <div class="section">
+      <label>📦 SKRADZIONE</label>
+      <input type="text" id="skr-nr" placeholder="Numery orderów" />
+      <input type="text" id="skr-kur" placeholder="Kurier" />
+      <input type="text" id="skr-nor" placeholder="Norka" />
+      <button class="btn-add-queue" onclick="addToQueue('skradzione')">
+        ➕ DODAJ
+      </button>
+    </div>
+
+    <div class="section" style="border-left: 4px solid #1a237e">
+      <label style="color: #1a237e">🚚 PRZERZUTY (Screen)</label>
+      <div class="image-drop-zone" id="zone-przerzut" tabindex="0">
+        <button
+          class="remove-img-btn"
+          onclick="
+            event.stopPropagation();
+            resetZone('zone-przerzut');
+          "
+        >
+          ×
+        </button>
+        <span>Kliknij i Ctrl+V</span>
+        <img class="preview-thumb" />
+      </div>
+      <button class="btn-add-queue" onclick="addToQueue('przerzut_img')">
+        ➕ DODAJ
+      </button>
+    </div>
+
+    <div class="section" style="border-left: 4px solid #ff7300">
+      <label>🕒 KOLEJKOWANIE</label>
+      <input type="text" id="kol-nor" placeholder="Norka" />
+      <input type="text" id="kol-godz" placeholder="Godzina" />
+      <div class="image-drop-zone" id="zone-kolejka" tabindex="0">
+        <button
+          class="remove-img-btn"
+          onclick="
+            event.stopPropagation();
+            resetZone('zone-kolejka');
+          "
+        >
+          ×
+        </button>
+        <span>Kliknij i Ctrl+V</span>
+        <img class="preview-thumb" />
+      </div>
+      <button class="btn-add-queue" onclick="addToQueue('kolejkowanie')">
+        ➕ DODAJ
+      </button>
+    </div>
+
+    <div class="queue-container">
+      <label style="color: #333">📋 KOLEJKA DO ZAPISU:</label>
+      <div id="queue-list"><i style="color: #999">Brak wpisów...</i></div>
+
+      <button
+        class="btn-preview"
+        onclick="google.script.run.pokazPodgladDzis()"
+      >
+        👁️ POKAŻ PODGLĄD RAPORTU (Dzisiaj)
+      </button>
+      <button
+        class="btn-save"
+        id="btn-main-save"
+        onclick="saveQueue()"
+        disabled
+      >
+        💾 ZAPISZ WSZYSTKO W ARKUSZU
+      </button>
+    </div>
+
+    <p
+      id="status"
+      style="text-align: center; font-weight: bold; color: #666"
+    ></p>
+
+    <script>
+      let queue = [];
+
+      document.addEventListener("paste", function (e) {
+        const zone = document.activeElement.closest(".image-drop-zone");
+        if (!zone) return;
+        const item = Array.from(e.clipboardData.items).find((i) =>
+          i.type.includes("image"),
+        );
+        if (item) {
+          const reader = new FileReader();
+          reader.onload = function (evt) {
+            zone.dataset.img = evt.target.result;
+            zone.querySelector("img").src = evt.target.result;
+            zone.querySelector("img").style.display = "block";
+            zone.querySelector("span").innerText = "✅ Wklejone!";
+            zone.classList.add("has-img");
+          };
+          reader.readAsDataURL(item.getAsFile());
+        }
+      });
+
+      function addToQueue(type) {
+        let item = { type: type, id: Date.now() };
+        if (type === "spoznienie") {
+          item.val = document.getElementById("inp-spozn").value;
+          if (!item.val) return;
+          document.getElementById("inp-spozn").value = "";
+        } else if (type === "skradzione") {
+          item.numery = document.getElementById("skr-nr").value;
+          item.kurier = document.getElementById("skr-kur").value;
+          item.norka = document.getElementById("skr-nor").value;
+          if (!item.numery) return;
+          ["skr-nr", "skr-kur", "skr-nor"].forEach(
+            (id) => (document.getElementById(id).value = ""),
+          );
+        } else if (type === "przerzut_img") {
+          item.image = document.getElementById("zone-przerzut").dataset.img;
+          if (!item.image) return;
+          resetZone("zone-przerzut");
+        } else if (type === "kolejkowanie") {
+          item.norka = document.getElementById("kol-nor").value;
+          item.godzina = document.getElementById("kol-godz").value;
+          item.image = document.getElementById("zone-kolejka").dataset.img;
+          if (!item.norka) return;
+          ["kol-nor", "kol-godz"].forEach(
+            (id) => (document.getElementById(id).value = ""),
+          );
+          resetZone("zone-kolejka");
+        }
+        queue.push(item);
+        renderQueue();
+      }
+
+      function resetZone(id) {
+        const z = document.getElementById(id);
+        z.dataset.img = "";
+        z.classList.remove("has-img");
+        z.querySelector("img").style.display = "none";
+        z.querySelector("span").innerText = "Kliknij i Ctrl+V";
+      }
+
+      function renderQueue() {
+        const list = document.getElementById("queue-list");
+        const btn = document.getElementById("btn-main-save");
+        if (queue.length === 0) {
+          list.innerHTML = "<i>Brak wpisów...</i>";
+          btn.disabled = true;
+          return;
+        }
+        btn.disabled = false;
+        list.innerHTML = queue
+          .map(
+            (i) => `
+        <div class="queue-item">
+          <span><b>${i.type}</b> ${i.norka || i.numery || "Screen"}</span>
+          <button class="btn-delete" onclick="removeFromQueue(${i.id})">USUŃ</button>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      function removeFromQueue(id) {
+        queue = queue.filter((i) => i.id !== id);
+        renderQueue();
+      }
+
+      function saveQueue() {
+        const status = document.getElementById("status");
+        const btn = document.getElementById("btn-main-save");
+        btn.disabled = true;
+        status.innerText = "⏳ Zapisywanie...";
+        google.script.run
+          .withSuccessHandler((res) => {
+            status.innerText = res;
+            queue = [];
+            renderQueue();
+          })
+          .zapiszDaneDoArkusza(queue);
+      }
+    </script>
+  </body>
+</html>

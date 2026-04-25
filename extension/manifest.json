@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Kadromierz Helper PLUS",
+  "version": "1.4",
+  "content_scripts": [
+    {
+      "matches": ["*://*.kadromierz.pl/*", "*://kadromierz.pl/*"],
+      "js": [
+        "src/kadromierz.js",
+        "src/kadromierz-lamanki.js",
+        "src/kadromierz-alerts.js"
+      ]
+    },
+    {
+      "matches": ["*://internal-hq.company.com*"],
+      "js": ["src/hq-mapa.js", "src/hq-zamknij.js", "src/hq-polityki.js"]
+    }
+  ],
+  "permissions": ["storage"]
+}
