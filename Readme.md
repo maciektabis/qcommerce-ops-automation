@@ -38,7 +38,7 @@ A floating UI injected into the internal dispatch dashboard allowing mass-action
 ### 2. Shift Automation / Kadromierz Scraper (Frontend)
 
 - **Live Shift Radar:** Scrapes and analyzes active shifts in real-time to provide alerts for missing clock-ins or unlogged clock-outs.
-- **Auto-Shift Bridging (Łamanki):** An automated DOM-manipulation script that clicks through the HR interface to automatically close and split overlapping shifts. **It turns a tedious 15-minute clicking process into a 5-second automated task.**
+- **Auto-Shift Bridging (Łamanki):** An automated DOM-manipulation script that clicks through the HR interface to automatically close and split overlapping shifts. **It turns a tedious a few minutes clicking process into a 5-second automated task.**
 - **Clipboard Reporting:** Generates instant, formatted reports of late or absent couriers.
 
 ### 3. Daily Command Center & Report Generator (Backend)
@@ -106,7 +106,7 @@ Pływający interfejs wstrzykiwany do wewnętrznego panelu dyspozytorskiego, poz
 ### 2. Automatyzacja Kadromierz / Web Scraping (Frontend)
 
 - **Radar Zmian na żywo:** Analiza i scrapowanie aktywnych zmian (Kadromierz) w czasie rzeczywistym, wysyłająca alerty o brakujących odbiciach "wejścia" lub "wyjścia" z pracy.
-- **Auto-Łamanki (Łączenie zmian):** Zautomatyzowany skrypt manipulujący modelem DOM, który przeklikuje się przez interfejs HR, aby automatycznie zamykać i rozdzielać nakładające się zmiany. **Zamienia 15-minutowy, frustrujący proces ręczny w 5-sekundowe kliknięcie.**
+- **Auto-Łamanki (Łączenie zmian):** Zautomatyzowany skrypt manipulujący modelem DOM, który przeklikuje się przez interfejs HR, aby automatycznie zamykać i rozdzielać nakładające się zmiany. **Zamienia kilku-minutowy, frustrujący proces ręczny w 5-sekundowe kliknięcie.**
 - **Raportowanie do schowka:** Generowanie gotowych, sformatowanych raportów o spóźnionych i nieobecnych kurierach bezpośrednio do schowka systemowego.
 
 ### 3. Generator Raportów (Backend)
