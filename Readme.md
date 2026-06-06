@@ -2,7 +2,7 @@
 
 _[Kliknij tutaj, aby przejść do polskiej wersji językowej / Click here for the Polish version](#-wersja-polska)_
 
-A comprehensive browser extension and Google Apps Script backend designed to automate daily operations, darkstore management, HR shift adjustments, and daily reporting for a quick-commerce delivery platform.
+A comprehensive browser extension and Google Apps Script backend designed to automate daily operations, darkstore management, shift adjustments, and daily reporting for a quick-commerce delivery platform.
 
 > **⚠️ Security Disclaimer:** For confidentiality (NDA) and operational security reasons, this repository is an anonymized version of the original project. All real API endpoints, bot tokens, spreadsheet IDs, Google Drive folder IDs, and internal company names have been replaced with placeholders.
 
@@ -68,7 +68,7 @@ Located directly inside the Google Sheets operational database (`Automat.js` & `
 
 # Automatyzacja Operacji Q-Commerce 🦊
 
-Kompleksowe rozszerzenie do przeglądarki oraz backend oparty na Google Apps Script, zaprojektowane w celu automatyzacji codziennych operacji, zarządzania darkstore'ami, modyfikacji zmian HR oraz generowania dziennych raportów dla platformy quick-commerce (szybkich dostaw).
+Kompleksowe rozszerzenie do przeglądarki oraz backend oparty na Google Apps Script, zaprojektowane w celu automatyzacji codziennych operacji, zarządzania darkstore'ami, modyfikacji zmian oraz generowania dziennych raportów dla platformy quick-commerce (szybkich dostaw).
 
 > **⚠️ Informacja o bezpieczeństwie:** Ze względów poufności (NDA) i bezpieczeństwa operacyjnego, to repozytorium jest zanonimizowaną wersją oryginalnego projektu. Wszystkie prawdziwe endpointy API, tokeny botów, ID arkuszy, ID folderów Google Drive oraz wewnętrzne nazwy firmy zostały zastąpione danymi zastępczymi (placeholderami).
 
