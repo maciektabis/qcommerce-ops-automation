@@ -35,7 +35,7 @@ A floating UI injected into the internal dispatch dashboard allowing mass-action
 - **Service Fee Policies:** Temporarily increase delivery fees (e.g., +5 PLN, +10 PLN) during high demand, logging data straight to the database.
 - **Telegram Integration:** Automatically dispatches alerts to specific regional Telegram channels whenever a zone's status or delivery timeframe changes.
 
-### 2. HR & Shift Automation / Kadromierz Scraper (Frontend)
+### 2. Shift Automation / Kadromierz Scraper (Frontend)
 
 - **Live Shift Radar:** Scrapes and analyzes active shifts in real-time to provide alerts for missing clock-ins or unlogged clock-outs.
 - **Auto-Shift Bridging (Łamanki):** An automated DOM-manipulation script that clicks through the HR interface to automatically close and split overlapping shifts. **It turns a tedious 15-minute clicking process into a 5-second automated task.**
@@ -103,7 +103,7 @@ Pływający interfejs wstrzykiwany do wewnętrznego panelu dyspozytorskiego, poz
 - **Zarządzanie Polityką Opłat:** Tymczasowe zwiększanie opłat za dostawę (np. +5zł, +10zł) w okresach wysokiego popytu, logujące się prosto do bazy danych.
 - **Integracja z Telegramem:** Automatyczne wysyłanie alertów na dedykowane, regionalne kanały Telegram za każdym razem, gdy zmienia się status strefy lub okno czasowe dostawy.
 
-### 2. Automatyzacja HR / Web Scraping (Frontend)
+### 2. Automatyzacja Kadromierz / Web Scraping (Frontend)
 
 - **Radar Zmian na żywo:** Analiza i scrapowanie aktywnych zmian (Kadromierz) w czasie rzeczywistym, wysyłająca alerty o brakujących odbiciach "wejścia" lub "wyjścia" z pracy.
 - **Auto-Łamanki (Łączenie zmian):** Zautomatyzowany skrypt manipulujący modelem DOM, który przeklikuje się przez interfejs HR, aby automatycznie zamykać i rozdzielać nakładające się zmiany. **Zamienia 15-minutowy, frustrujący proces ręczny w 5-sekundowe kliknięcie.**
